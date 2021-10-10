@@ -18,6 +18,7 @@ public class Menu {
     this.price = price;
   }
 
+
   public String getId() {
     return id;
   }
@@ -35,26 +36,24 @@ public class Menu {
   }
 
   // Nhập
-  public Menu enterInformation() {
-
-    System.out.print("id");
-    id = sc.nextLine();
-    System.out.print("name");
+  public Menu enterInformation(String id) {
+    this.id = id;
+    System.out.print("Tên: ");
     name = sc.nextLine();
-    System.out.print("type");
+    System.out.print("Loại (đồ ăn/đồ uống): ");
     type = sc.nextLine();
-    System.out.print("price");
+    System.out.print("Giá sản phẩm: ");
     price = Float.parseFloat(sc.nextLine());
-    return new Menu(id, name, type, price);
+    return new Menu(this.id, name, type, price);
   }
 
 
   // Xuất đơn
   public void showInformation() {
-    System.out.println("Id: " + id);
-    System.out.println("Name: " + name);
-    System.out.println("Type: " + type);
-    System.out.println("Price: " + price);
+    System.out.println("ID: " + id);
+    System.out.println("Tên: " + name);
+    System.out.println("Loại: " + type);
+    System.out.println("Giá sản phẩm: " + price);
   }
 
   // Xuất danh sách
