@@ -1,3 +1,5 @@
+import Menu.Menu;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -29,10 +31,10 @@ public class App {
       case 2 -> {
         System.out.println("1. Nhập danh sách đồ ăn/uống ");
         System.out.println("2. Thêm đồ ăn/uống");
-        System.out.println("2. Hiển thị danh sách đồ ăn/uống ");
-        System.out.println("3. Xoá đồ ăn/uống");
-        System.out.println("4. Sửa danh sách");
-        System.out.println("5. Thoát chương trình");
+        System.out.println("3. Hiển thị danh sách đồ ăn/uống ");
+        System.out.println("4. Xoá đồ ăn/uống");
+        System.out.println("5. Sửa danh sách");
+        System.out.println("6. Thoát chương trình");
       }
       case 3 -> {
         System.out.println("1. Thêm order ");
@@ -46,7 +48,6 @@ public class App {
         System.out.println("5. Thoát chương trình");
       }
     }
-
   }
 
   public static void cancelProgram() {
@@ -80,13 +81,13 @@ public class App {
       }
       break;
     }
-
     return value;
   }
 
   public static void main(String[] args) {
 
     int n, varController1, varController2;
+    ArrayList<Menu> menuArray = new ArrayList<>();
 
     while (true) {
       menulist();
@@ -98,52 +99,88 @@ public class App {
             menuItem(varController1);
             System.out.print("❔ Chọn option: ");
             varController2 = checkInt();
-            switch (varController2) {
-              case 1: {
+            if (varController2 == 1) {
 
-              }
-              case 2: {
-
-              }
-              case 3: {
-
-              }
-              case 4: {
-
-              }
-              case 5: {
-                System.exit(0);
-              }
-              default: {
-                System.out.println("Vui lòng nhập lại");
-              }
+            } else if (varController2 == 2) {
+              System.out.println("2");
+            } else if (varController2 == 3) {
+              System.out.println("2");
+            } else {
+              System.out.println("Vui lòng nhập lại");
             }
           }
         }
         case 2: {
+          Menu varHandleMenu = new Menu();
           while (true) {
             menuItem(varController1);
-            System.out.print("❔ Chọn option");
+            System.out.print("❔ Chọn option: ");
             varController2 = checkInt();
-            switch (varController2) {
-              case 1: {
-                System.out.println("1");
+            if (varController2 == 1) {
+              System.out.print("Nhập số lượng đồ ăn/uống: ");
+              n = checkInt();
+              sc.nextLine();
+              menuArray = new ArrayList<>(n);
+              for (int i = 0; i < n; i++) {
+                System.out.println("Nhập đồ ăn/uống " + (i + 1));
+                menuArray.add(varHandleMenu.enterInformation());
               }
-              case 2: {
+            } else if (varController2 == 2) {
+              System.out.println("--------Nhập dữ liệu đồ ăn/uống");
+              menuArray.add(varHandleMenu.enterInformation());
+            } else if (varController2 == 3) {
+              int i = 0;
+              for (Menu menuItem : menuArray) {
+                System.out.println("Thông tin đồ ăn " + (++i));
+                menuItem.showInformation();
+              }
+            } else if (varController2 == 4) {
+              System.out.print("Nhập id đồ ăn/uống cần xoá: ");
+              sc.nextLine();
+              String idFind = sc.nextLine();
+              for (int i = 0; i < menuArray.size(); i++) {
+                if (Objects.equals(idFind, menuArray.get(i).getId())) {
+                  menuArray.remove(i);
+                }
+              }
+            } else if (varController2 == 5) {
+              System.out.print("Nhập id đồ ăn/uống cần sửa: ");
 
+              sc.nextLine();
+              String idFind = sc.nextLine();
+              for (int i = 0; i < menuArray.size(); i++) {
+                if (Objects.equals(idFind, menuArray.get(i).getId())) {
+                  System.out.print("Nhập loại thông tin bạn muốn sửa (name/type/price): ");
+                  String option = sc.nextLine();
+                  System.out.print("Nhập dữ liệu mới: ");
+                  String newValue = "";
+                  float newValueFloat = 0f;
+                  if (option.equals("price")) {
+                    newValueFloat = sc.nextFloat();
+                  } else {
+                    newValue = sc.nextLine();
+                  }
+                  if (option.equals("name")) {
+                    menuArray.set(i,
+                        new Menu(menuArray.get(i).getId(), newValue, menuArray.get(i).getType(),
+                            menuArray.get(i).getPrice()));
+                  } else if (option.equals("type")) {
+                    menuArray.set(i,
+                        new Menu(menuArray.get(i).getId(), menuArray.get(i).getName(), newValue,
+                            menuArray.get(i).getPrice()));
+                  } else if (option.equals("price")) {
+                    menuArray.set(i,
+                        new Menu(menuArray.get(i).getId(), menuArray.get(i).getName(),
+                            menuArray.get(i).getType(), newValueFloat));
+                  } else {
+                    System.out.println("Không tồn tại loại thông tin bạn muốn sửa");
+                  }
+                }
               }
-              case 3: {
-
-              }
-              case 4: {
-
-              }
-              case 5: {
-                System.exit(0);
-              }
-              default: {
-                System.out.println("Vui lòng nhập lại");
-              }
+            } else if (varController2 == 6) {
+              break;
+            } else {
+              System.out.println("Vui lòng nhập lại");
             }
           }
         }
