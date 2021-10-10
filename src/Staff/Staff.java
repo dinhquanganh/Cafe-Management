@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class Staff {
 
+  // Variable
   private String id, name, address, position;
   private int age;
   public static Scanner sc = new Scanner(System.in);
 
+  // Constructor
   public Staff() {
   }
 
@@ -19,6 +21,7 @@ public class Staff {
     this.age = age;
   }
 
+  // Getter
   public String getId() {
     return id;
   }
@@ -39,7 +42,7 @@ public class Staff {
     return age;
   }
 
-  // Nhập
+  // Nhập dữ liệu
   public Staff enterInformation(String id) {
     this.id = id;
     System.out.print("Họ và tên: ");
@@ -56,11 +59,11 @@ public class Staff {
 
   // Xuất đơn
   public void showInformation() {
-    System.out.println("ID: " + id);
-    System.out.println("Họ và tên: " + name);
-    System.out.println("Tuổi: " + age);
-    System.out.println("Địa chỉ: " + address);
-    System.out.println("Chức vụ hiện tại: " + position);
+    System.out.println("  ID nhân viên: " + id);
+    System.out.println("  Họ và tên: " + name);
+    System.out.println("  Tuổi: " + age);
+    System.out.println("  Địa chỉ: " + address);
+    System.out.println("  Chức vụ hiện tại: " + position);
   }
 
   // Xuất danh sách

@@ -17,12 +17,12 @@ public class OrderItem extends OrderList {
     this.quantity = quantity;
   }
 
-  // Geter
+  // Getter
   public int getQuantity() {
     return quantity;
   }
 
-  // Nhập
+  // Nhập dữ liệu
   public OrderItem enterInformation() {
     System.out.print("-- Nhập id đồ ăn/uống: ");
     id = sc.nextLine();

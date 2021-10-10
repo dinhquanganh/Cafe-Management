@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class Menu {
 
+  // Variable
   private String id, name, type;
   private float price;
   public static Scanner sc = new Scanner(System.in);
 
+  // Constructor
   public Menu() {
   }
 
@@ -18,7 +20,7 @@ public class Menu {
     this.price = price;
   }
 
-
+  // Getter
   public String getId() {
     return id;
   }
@@ -35,7 +37,7 @@ public class Menu {
     return price;
   }
 
-  // Nhập
+  // Nhập dữ liệu
   public Menu enterInformation(String id) {
     this.id = id;
     System.out.print("Tên: ");
@@ -50,10 +52,10 @@ public class Menu {
 
   // Xuất đơn
   public void showInformation() {
-    System.out.println("ID: " + id);
-    System.out.println("Tên: " + name);
-    System.out.println("Loại: " + type);
-    System.out.println("Giá sản phẩm: " + price);
+    System.out.println("  ID: " + id);
+    System.out.println("  Tên: " + name);
+    System.out.println("  Loại: " + type);
+    System.out.println("  Giá sản phẩm: " + price);
   }
 
   // Xuất danh sách
