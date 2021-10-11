@@ -84,6 +84,7 @@ public class App {
 
   public static void main(String[] args) {
     System.out.println("Chào mừng bạn sử dụng sản phẩm 'Phần mềm quản lý quán cafe'");
+    System.out.println("Tạo bởi Đinh Quang Anh - Ngô Đức Quý'");
     int n, varController1, varController2;
     ArrayList<Staff> staffArray = new ArrayList<>();
     ArrayList<Menu> menuArray = new ArrayList<>();
